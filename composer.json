@@ -52,7 +52,6 @@
         ],
         "setup-db":[
             "php artisan migrate",
-            "php artisan add:user",
             "php artisan optimize",
             "php artisan config:cache"
         ]

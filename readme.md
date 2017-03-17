@@ -72,4 +72,6 @@ save and exit ( :x )
 ```
 chown apache:apache -R storage/ bootstrap/cache/
 composer.phar setup-db
+
+php artisan add:user
 ```
