@@ -98,7 +98,7 @@ class WebController extends Controller
         $this->validate($request, [
             'name' => 'required|unique:Domain|max:50'
         ]);
-
+        $request->name = str_slug($request->name);
         $data = $this->cpanel->add_record($request->name,$request->ip());
         if ($data == null) {
             $domain = new Domain;
