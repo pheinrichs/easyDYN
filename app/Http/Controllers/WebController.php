@@ -141,4 +141,31 @@ class WebController extends Controller
 
         return redirect('/domains')->with('status', $status);
     }
+
+
+        public function load_edit(Request $request) {
+            $domain = Domain::find($request->id);
+            return view('edit')->with(['item'=>$domain]);
+        }
+        /**
+         * Manually update dns entry ip.
+         *
+         * @return \Illuminate\Http\Response
+         */
+        public function manual_update(Request $request) {
+            $this->validate($request, [
+                'ip'=> 'required|ip'
+            ]);
+            $domain = Domain::find($request->id);
+            $status = '';
+
+            $line = $this->cpanel->lookup_zone($domain->name);
+            $status = $this->cpanel->edit_record($line,$domain->name,$request->ip);
+
+            $domain->ip = $request->ip;
+            $domain->save();
+
+            return redirect('/domains')->with('status', $status);
+        }
+
 }

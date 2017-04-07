@@ -74,6 +74,9 @@
                                           <li>
                                               <a href='{{ url("/toggle/$domain->id")}}'>@if($domain->active == 1) Disable @else Enable @endif</a>
                                           </li>
+                                           <li>
+                                               <a href="{{url('/edit/'.$domain->id)}}">Edit</a>
+                                           </li>
                                           <li>
                                               <a class="open-modal" data-toggle="modal" data-target="#myModal" data-url-link='{{ url("/api/domain?name=$domain->name&token=$domain->token")}}'>{{ __('generic.gen') }}</a>
                                           </li>
