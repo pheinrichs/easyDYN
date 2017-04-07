@@ -36,7 +36,7 @@ Route::group(['middleware'=>'cPanel'],function() {
     Route::post('/new',['uses'=> 'WebController@new'])->middleware('auth');
     Route::get('/', 'WebController@domains')->middleware('auth');
     Route::get('/home', 'WebController@domains')->middleware('auth');
-    Route::get('/domains', 'WebController@domains')->middleware('auth');
+    // Route::get('/domains', 'WebController@domains')->middleware('auth');
     Route::get('/delete/{id}', 'WebController@delete')->middleware('auth');
     Route::get('/toggle/{id}', 'WebController@toggle')->middleware('auth');
     Route::get('/edit/{id}', 'WebController@load_edit')->middleware('auth');
