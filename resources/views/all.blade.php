@@ -104,13 +104,22 @@
       </div>
       <div class="modal-body">
           <input id="url" class="form-control"  value="" onClick="this.setSelectionRange(0, this.value.length)"  readonly="readonly"/>
+      
+          <label>Mikrotik Console Command</label>
+          <textarea readonly="readonly" id="command" onClick="this.setSelectionRange(0, this.value.length)" class="form-control">
+
+          </textarea>
       </div>
+
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
       </div>
     </div>
   </div>
 </div>
+<!--
+
+-->
 @endsection
 
 @section('script')
@@ -119,6 +128,9 @@
         console.log('test');
         var urlID = $(e.relatedTarget).data('url-link');
         $('#url').val(urlID);
+        $('#command').val("system script add source=\"/tool fetch url='"+urlID+"' mode=https keep-result=no\" name=ddns \n system scheduler add start-time=startup interval=1800 on-event=ddns name=DNSScheduler \n");
     });
     </script>
 @endsection
+
+
