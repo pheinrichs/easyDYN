@@ -78,7 +78,7 @@
                                                <a href="{{url('/edit/'.$domain->id)}}">Edit</a>
                                            </li>
                                           <li>
-                                              <a class="open-modal" data-toggle="modal" data-target="#myModal" data-url-link='{{ url("/api/domain?name=$domain->name&token=$domain->token")}}'>{{ __('generic.gen') }}</a>
+                                              <a class="open-modal" data-toggle="modal" data-target="#myModal" data-url-link='{{ url("/api/domain/$domain->name/$domain->token")}}'>{{ __('generic.gen') }}</a>
                                           </li>
                                         <li><a href='{{url("/delete/$domain->id")}}' onclick="return confirm('Are you sure you want to delete this item?');">{{ __('generic.delete') }}</a></li>
                                       </ul>

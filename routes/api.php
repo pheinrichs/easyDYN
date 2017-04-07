@@ -14,3 +14,4 @@ use Illuminate\Http\Request;
 */
 
 Route::get('/domain', ['uses' =>'ApiController@update_ip']);
+Route::get('/domain/{name}/{token}', ['uses' =>'ApiController@update_ip']);
