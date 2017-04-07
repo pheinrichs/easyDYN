@@ -28,7 +28,7 @@ class WebController extends Controller
             return view('new');
         }
         else {
-            return redirect('/domains')->with('errors',"Some of your cPanel variables are not set, check the .env file and run  'php artisan config:cache' in the command line");
+            return redirect('/')->with('errors',"Some of your cPanel variables are not set, check the .env file and run  'php artisan config:cache' in the command line");
         }
 
     }
@@ -106,7 +106,7 @@ class WebController extends Controller
             $domain->token = str_random(30);
             $domain->ip = $request->ip();
             $domain->save();
-            return redirect('/domains')->with('status', 'Entry was already found in cPanel, added to local DB.');
+            return redirect('/')->with('status', 'Entry was already found in cPanel, added to local DB.');
         }
         if($data->cpanelresult->data[0]->result->status == 1) {
             $domain = new Domain;
@@ -114,10 +114,10 @@ class WebController extends Controller
             $domain->token = str_random(30);
             $domain->ip = $request->ip();
             $domain->save();
-            return redirect('/domains')->with('status', 'Added entry!');
+            return redirect('/')->with('status', 'Added entry!');
         }
         else {
-            return redirect('/domains')->with('status', $data->cpanelresult->data[0]->reason);
+            return redirect('/')->with('status', $data->cpanelresult->data[0]->reason);
         }
     }
 
@@ -139,7 +139,7 @@ class WebController extends Controller
         $domain->ip = $request->ip();
         $domain->save();
 
-        return redirect('/domains')->with('status', $status);
+        return redirect('/')->with('status', $status);
     }
 
 
@@ -165,7 +165,7 @@ class WebController extends Controller
             $domain->ip = $request->ip;
             $domain->save();
 
-            return redirect('/domains')->with('status', $status);
+            return redirect('/')->with('status', $status);
         }
 
 }
