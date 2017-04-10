@@ -137,7 +137,7 @@
         console.log('test');
         var urlID = $(e.relatedTarget).data('url-link');
         $('#url').val(urlID);
-        $('#command').val("system script add source=\"/tool fetch url="+urlID+" mode=http keep-result=no name=ddns \" \n system scheduler add start-time=startup interval=1800 on-event=ddns name=DNSScheduler \n system script run ddns \n");
+        $('#command').val("system script add source=\"/tool fetch url="+urlID+" mode=http keep-result=no \" name=ddns  \n system scheduler add start-time=startup interval=1800 on-event=ddns name=DNSScheduler \n system script run ddns \n");
     });
     </script>
 @endsection
